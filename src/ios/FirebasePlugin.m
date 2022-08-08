@@ -2216,9 +2216,15 @@ static NSMutableDictionary* traces;
 - (void) getInstallationId:(CDVInvokedUrlCommand*)command {
     [self.commandDelegate runInBackground:^{
         @try {
+            /*
             [[FIRInstallations installations] installationIDWithCompletion:^(NSString *identifier, NSError *error) {
                 [self handleStringResultWithPotentialError:error command:command result:identifier];
             }];
+             */
+            /* fixed hakan */
+            NSError *error = NULL;
+            [self handleStringResultWithPotentialError:error command:command result:[FIRAnalytics appInstanceID]];
+            /* fixed hakan */
         }@catch (NSException *exception) {
             [self handlePluginExceptionWithContext:exception :command];
         }
