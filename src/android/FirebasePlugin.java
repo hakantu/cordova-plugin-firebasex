@@ -2812,7 +2812,7 @@ public class FirebasePlugin extends CordovaPlugin {
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 try {
-                    handleTaskOutcomeWithStringResult(FirebaseInstallations.getInstance().getId(), callbackContext);
+                    handleTaskOutcomeWithStringResult(mFirebaseAnalytics.getAppInstanceId(), callbackContext);
                 } catch (Exception e) {
                     handleExceptionWithContext(e, callbackContext);
                 }
